@@ -1,0 +1,20 @@
+"use strict";
+// import { HTTP } from "../utils/enum";
+// import { iError } from "../utils/interface";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mainError = void 0;
+class mainError extends Error {
+    constructor(args) {
+        super(args.message);
+        this.success = false;
+        Object.setPrototypeOf(this, new.target.prototype);
+        this.name = args.name;
+        this.message = args.message;
+        this.status = args.status;
+        if (this.success === undefined) {
+            this.success = args.success;
+        }
+        Error.captureStackTrace;
+    }
+}
+exports.mainError = mainError;
